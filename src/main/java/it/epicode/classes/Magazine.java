@@ -5,10 +5,13 @@ import it.epicode.enumerations.Frequency;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue("magazine")
 public class Magazine extends Catalogue {
+    @Enumerated(EnumType.STRING)
     private Frequency frequency;
 
     public Magazine() {
