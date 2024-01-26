@@ -48,18 +48,27 @@ public class CatalogueDAO {
     public List<Catalogue> researchByISBN(long ISBN) {
         TypedQuery<Catalogue> query = entityManager.createNamedQuery("researchByISBN", Catalogue.class);
         query.setParameter("ISBN", ISBN);
-        return query.getResultList();
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Non sono presenti elementi nel catalogo con questo id: " + ISBN);
+            return null;
+        } else return query.getResultList();
     }
 
     public List<Catalogue> researchByYearOfPublication(int yearOfPublication) {
         TypedQuery<Catalogue> query = entityManager.createNamedQuery("researchByYearOfPublication", Catalogue.class);
         query.setParameter("yearOfPublication", yearOfPublication);
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Non sono presenti elementi nel catalogo pubblicati nel " + yearOfPublication);
+        }
         return query.getResultList();
     }
 
     public List<Catalogue> researchByTitle(String partialName) {
-        TypedQuery<Catalogue> query = entityManager.createNamedQuery("researchByYearOfPublication", Catalogue.class);
+        TypedQuery<Catalogue> query = entityManager.createNamedQuery("researchByTitle", Catalogue.class);
         query.setParameter("partialName", partialName);
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Nessun elemento del catalogo trovato");
+        }
         return query.getResultList();
     }
 }

@@ -22,5 +22,18 @@ public class Archive {
         //Funzione che accetta un intero e ci crea N magazine, N libri, N utenti e N prestiti
         Utility.createDatabase(10);
 
+        System.out.println("**TEST QUERY");
+
+        System.out.println();
+        System.out.println("**Ricerca tramite ISBN");
+        catDao.researchByISBN(1).forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("**Ricerca tramite anno di pubblicazione");
+        catDao.researchByYearOfPublication(2020).forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("**Ricerca Ricerca per titolo o parte di esso");
+        catDao.researchByTitle("far").forEach(System.out::println);
     }
 }
