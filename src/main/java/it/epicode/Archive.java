@@ -15,8 +15,6 @@ public class Archive {
     public static void main(String[] args) {
         EntityManager entityManager = emf.createEntityManager();
         CatalogueDAO catDao = new CatalogueDAO(entityManager);
-        UserDAO userDao = new UserDAO(entityManager);
-        LoanDAO loanDao = new LoanDAO(entityManager);
 
         //Funzione che accetta un intero e ci crea N magazine, N libri, N utenti e N prestiti
         Utility.createDatabase(10);
