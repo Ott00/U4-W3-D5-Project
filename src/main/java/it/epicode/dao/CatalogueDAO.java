@@ -89,4 +89,12 @@ public class CatalogueDAO {
         }
         return query.getResultList();
     }
+
+    public List<Catalogue> getAllExpiredLoans() {
+        TypedQuery<Catalogue> query = entityManager.createNamedQuery("getAllExpiredLoans", Catalogue.class);
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Nessun elemento con prestito scaduto trovato");
+        }
+        return query.getResultList();
+    }
 }

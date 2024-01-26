@@ -1,6 +1,5 @@
 package it.epicode;
 
-
 import it.epicode.dao.CatalogueDAO;
 import it.epicode.dao.LoanDAO;
 import it.epicode.dao.UserDAO;
@@ -34,14 +33,19 @@ public class Archive {
 
         System.out.println();
         System.out.println("**Ricerca per titolo o parte di esso");
-        catDao.researchByTitle("far").forEach(System.out::println);
+        catDao.researchByTitle("TITOLO_O_PARTE_DI_ESSO").forEach(System.out::println);
 
         System.out.println();
         System.out.println("**Ricerca per autore");
-        catDao.researchByAuthor("Ausonio").forEach(System.out::println);
+        catDao.researchByAuthor("NOME_AUTORE").forEach(System.out::println);
 
         System.out.println();
-        System.out.println("**Ricerca degli elementi attualmente in prestito dato un numero di tessera utente\n");
+        System.out.println("**Ricerca degli elementi attualmente in prestito dato un numero di tessera utente");
         catDao.getCurrentUserLoans(1).forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("**Ricerca di tutti i prestiti scaduti e non ancora restituiti");
+        //Testato cambiando nel costruttore di Loan la expectedReturnDate con da "startDate.plusDays(30);" a "startDate.minusDays(31);"
+        catDao.getAllExpiredLoans().forEach(System.out::println);
     }
 }
