@@ -33,7 +33,15 @@ public class Archive {
         catDao.researchByYearOfPublication(2020).forEach(System.out::println);
 
         System.out.println();
-        System.out.println("**Ricerca Ricerca per titolo o parte di esso");
+        System.out.println("**Ricerca per titolo o parte di esso");
         catDao.researchByTitle("far").forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("**Ricerca per autore");
+        catDao.researchByAuthor("Ausonio").forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("**Ricerca degli elementi attualmente in prestito dato un numero di tessera utente\n");
+        catDao.getCurrentUserLoans(1).forEach(System.out::println);
     }
 }

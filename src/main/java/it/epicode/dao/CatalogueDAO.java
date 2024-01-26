@@ -71,4 +71,22 @@ public class CatalogueDAO {
         }
         return query.getResultList();
     }
+
+    public List<Catalogue> researchByAuthor(String authorName) {
+        TypedQuery<Catalogue> query = entityManager.createNamedQuery("researchByAuthor", Catalogue.class);
+        query.setParameter("author", authorName);
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Nessun elemento del catalogo trovato");
+        }
+        return query.getResultList();
+    }
+
+    public List<Catalogue> getCurrentUserLoans(long cardUserId) {
+        TypedQuery<Catalogue> query = entityManager.createNamedQuery("getCurrentUserLoans", Catalogue.class);
+        query.setParameter("card_user", cardUserId);
+        if (query.getResultList().isEmpty()) {
+            System.out.println("Nessun elemento in prestito attualmente");
+        }
+        return query.getResultList();
+    }
 }
